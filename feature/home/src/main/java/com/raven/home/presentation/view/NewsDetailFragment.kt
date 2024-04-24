@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.raven.home.databinding.HomeFragmentBinding
+import com.raven.home.databinding.DetailNewsFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class NewsDetailFragment : Fragment() {
 
-    private var _binding: HomeFragmentBinding? = null
+    private var _binding: DetailNewsFragmentBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -19,7 +19,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = HomeFragmentBinding.inflate(inflater, container, false)
+        _binding = DetailNewsFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
