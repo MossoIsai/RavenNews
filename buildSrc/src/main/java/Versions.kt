@@ -24,4 +24,5 @@ object Versions {
     /** Navigation **/
 
     const val navVersion = "2.5.1"
+    const val glide = "4.16.0"
 }

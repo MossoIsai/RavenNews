@@ -8,6 +8,7 @@ import Dependencies.hiltCompiler
 import Dependencies.junit
 import Dependencies.kotlinCore
 import Dependencies.lifeCycle
+import Dependencies.lifeCycleViewModel
 import Dependencies.logginInterceptor
 import Dependencies.material
 import Dependencies.navigationFragment
@@ -15,6 +16,7 @@ import Dependencies.navigationUI
 import Dependencies.okHttp
 import Dependencies.retrofit
 import Dependencies.retrofitConverter
+import Dependencies.glide
 import ext.androidTestImplementation
 import ext.implementation
 import ext.kapt
@@ -55,6 +57,8 @@ object Dependencies {
 
     val navigationUI by lazy { "androidx.navigation:navigation-ui-ktx:${Versions.navVersion}" }
     val navigationFragment by lazy { "androidx.navigation:navigation-fragment-ktx:${Versions.navVersion}" }
+    val lifeCycleViewModel by lazy { "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifeCycle}"}
+    val glide by lazy { "com.github.bumptech.glide:glide:${Versions.glide}"}
 }
 
 /** Dependencies **/
@@ -89,4 +93,6 @@ fun DependencyHandler.di() {
 fun DependencyHandler.navigation() {
     implementation(navigationUI)
     implementation(navigationFragment)
+    implementation(lifeCycleViewModel)
+    implementation(glide)
 }
