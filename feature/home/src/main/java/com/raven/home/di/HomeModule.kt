@@ -1,7 +1,7 @@
 package com.raven.home.di
 
-import com.raven.home.data.HomeRepository
-import com.raven.home.domain.HomeDataSource
+import com.raven.home.data.repository.HomeRepository
+import com.raven.home.domain.repository.HomeDataSource
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
