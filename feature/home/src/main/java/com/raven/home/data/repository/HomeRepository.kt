@@ -1,5 +1,6 @@
 package com.raven.home.data.repository
 
+import com.raven.core.BuildConfig
 import com.raven.home.data.Result
 import com.raven.home.data.remote.ServiceFactory
 import com.raven.home.data.remote.service.HomeService
@@ -22,7 +23,7 @@ class HomeRepository @Inject constructor(
     private val service = serviceFactory.makeConnectionApiService(HomeService::class.java)
     override suspend fun getNews(): Flow<Result<NewsDomain>> {
         return flow {
-            val response = service.getNews("")
+            val response = service.getNews(BuildConfig.MY_API_KEY)
             if (response.isSuccessful) {
                 emit(Result.Success(response.body()?.toNewsDomain()))
             } else {
