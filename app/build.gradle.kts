@@ -1,4 +1,3 @@
-import config.ProjectConfig
 
 plugins {
     id(AppPlugin.PLUGIN_APP)

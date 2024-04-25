@@ -1,5 +1,3 @@
-package config
-
 object ProjectConfig {
     const val appId = "com.raven.news"
     const val minSdk = 24

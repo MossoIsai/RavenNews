@@ -11,6 +11,7 @@ import Dependencies.lifeCycle
 import Dependencies.logginInterceptor
 import Dependencies.material
 import Dependencies.navigationFragment
+import Dependencies.lifecycleViewModel
 import Dependencies.navigationUI
 import Dependencies.okHttp
 import Dependencies.retrofit
@@ -55,6 +56,7 @@ object Dependencies {
 
     val navigationUI by lazy { "androidx.navigation:navigation-ui-ktx:${Versions.navVersion}" }
     val navigationFragment by lazy { "androidx.navigation:navigation-fragment-ktx:${Versions.navVersion}" }
+    val lifecycleViewModel by lazy { "androidx.lifecycle:lifecycle-viewmodel-ktx${Versions.lifeCycle}" }
 }
 
 /** Dependencies **/
@@ -89,4 +91,5 @@ fun DependencyHandler.di() {
 fun DependencyHandler.navigation() {
     implementation(navigationUI)
     implementation(navigationFragment)
+    implementation(lifecycleViewModel)
 }
