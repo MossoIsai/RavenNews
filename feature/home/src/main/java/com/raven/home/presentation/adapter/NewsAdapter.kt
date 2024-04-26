@@ -1,6 +1,5 @@
 package com.raven.home.presentation.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -34,7 +33,6 @@ class NewsAdapter : ListAdapter<ItemNews, NewsAdapter.NewsHolder>(MovieDiffCallb
         holder.bind.tvTitleNews.text = item.title
         holder.bind.tvSubtitleNews.text = item.subtitle
         holder.bind.tvCopyrightNews.text = item.copyright
-        Log.d("bebe", item.urlImage)
         Glide.with(holder.bind.root.context).load(item.urlImage).into(holder.bind.posterNewsImg);
     }
 }

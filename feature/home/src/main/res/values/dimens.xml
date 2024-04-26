@@ -1,5 +1,13 @@
 <resources>
 
-    <dimen name="standard_margin_16dp">16dp</dimen>
-    <dimen name="standard_margin_8dp">8dp</dimen>
+    <dimen name="standard_margin_big_16dp">16dp</dimen>
+    <dimen name="standard_margin_medium_8dp">8dp</dimen>
+
+    <dimen name="news_title_size">15sp</dimen>
+    <dimen name="news_subtitle_size">13sp</dimen>
+    <dimen name="news_copyright_size">12sp</dimen>
+
+    <dimen name="news_divider_size">2dp</dimen>
+    <dimen name="news_width_image">90dp</dimen>
+    <dimen name="news_height_image">70dp</dimen>
 </resources>

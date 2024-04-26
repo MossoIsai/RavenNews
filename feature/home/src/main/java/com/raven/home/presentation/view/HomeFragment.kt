@@ -27,6 +27,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var newsAdapter: NewsAdapter
+    private val loader by lazy { Loading() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,7 +45,7 @@ class HomeFragment : Fragment() {
                 viewModel.newUIState.collect { uiState ->
                     when (uiState) {
                         is NewsUIState.DisplayNews -> displayMoviesList(uiState.newsList)
-                        NewsUIState.Loading -> Log.d("", "")
+                        NewsUIState.Loading -> showLoader()
                         is NewsUIState.ShowError -> Log.d("", "")
                     }
                 }
@@ -53,6 +54,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun displayMoviesList(newsList: List<ItemNews>?) {
+        hideLoader()
         with(binding) {
             rvNewsList.visibility = View.VISIBLE
             newsAdapter = NewsAdapter()
@@ -65,6 +67,14 @@ class HomeFragment : Fragment() {
             rvNewsList.setHasFixedSize(true)
             rvNewsList.adapter = newsAdapter
         }
+    }
+
+    private fun showLoader() {
+        loader.show(childFragmentManager, "")
+    }
+
+    private fun hideLoader() {
+        loader.dismiss()
     }
 
     override fun onDestroy() {
