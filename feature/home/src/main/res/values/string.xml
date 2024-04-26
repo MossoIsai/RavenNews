@@ -2,5 +2,5 @@
 <resources>
 
     <string name="welcome_message">Hello Raven</string>
-
+    <string name="title_the_new_york_times">The New York Times</string>
 </resources>
