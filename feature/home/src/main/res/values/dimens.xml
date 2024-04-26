@@ -6,8 +6,13 @@
     <dimen name="news_title_size">15sp</dimen>
     <dimen name="news_subtitle_size">13sp</dimen>
     <dimen name="news_copyright_size">12sp</dimen>
+    <dimen name="news_title_app_size">22sp</dimen>
 
     <dimen name="news_divider_size">2dp</dimen>
     <dimen name="news_width_image">90dp</dimen>
     <dimen name="news_height_image">70dp</dimen>
+
+    <!--detail-->
+    <dimen name="news_detail_title_size">30sp</dimen>
+    <dimen name="news_detail_sub_title_size">20sp</dimen>
 </resources>
