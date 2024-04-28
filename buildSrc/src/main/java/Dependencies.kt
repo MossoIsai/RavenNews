@@ -17,6 +17,9 @@ import Dependencies.okHttp
 import Dependencies.retrofit
 import Dependencies.retrofitConverter
 import Dependencies.glide
+import Dependencies.roomKtx
+import Dependencies.roomCompiler
+import Dependencies.roomRuntime
 import ext.androidTestImplementation
 import ext.implementation
 import ext.kapt
@@ -57,8 +60,13 @@ object Dependencies {
 
     val navigationUI by lazy { "androidx.navigation:navigation-ui-ktx:${Versions.navVersion}" }
     val navigationFragment by lazy { "androidx.navigation:navigation-fragment-ktx:${Versions.navVersion}" }
-    val lifeCycleViewModel by lazy { "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifeCycle}"}
-    val glide by lazy { "com.github.bumptech.glide:glide:${Versions.glide}"}
+    val lifeCycleViewModel by lazy { "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifeCycle}" }
+    val glide by lazy { "com.github.bumptech.glide:glide:${Versions.glide}" }
+
+    /** room */
+    val roomKtx by lazy { "androidx.room:room-ktx:${Versions.roomVersion}" }
+    val roomCompiler by lazy { "androidx.room:room-compiler:${Versions.roomVersion}" }
+    val roomRuntime by lazy { "androidx.room:room-runtime:${Versions.roomVersion}" }
 }
 
 /** Dependencies **/
@@ -95,4 +103,10 @@ fun DependencyHandler.navigation() {
     implementation(navigationFragment)
     implementation(lifeCycleViewModel)
     implementation(glide)
+}
+
+fun DependencyHandler.room() {
+    implementation(roomKtx)
+    kapt(roomCompiler)
+    implementation(roomRuntime)
 }

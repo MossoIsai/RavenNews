@@ -11,16 +11,15 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-   useCase: GeNewsUseCase
+    useCase: GeNewsUseCase
 ) : ViewModel() {
 
     val newUIState: StateFlow<NewsUIState> =
-        useCase.execute("").map {
+        useCase.execute(true).map {
             when (it) {
                 is Result.Error -> NewsUIState.ShowError(it.message)
                 is Result.Success -> NewsUIState.DisplayNews(it.body)

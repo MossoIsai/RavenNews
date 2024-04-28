@@ -1,6 +1,6 @@
-package com.raven.home.data.remote.service
+package com.raven.home.data.source.remote.service
 
-import com.raven.home.data.remote.ServiceFactory
+import com.raven.home.data.source.remote.ServiceFactory
 import retrofit2.Retrofit
 import javax.inject.Inject
 

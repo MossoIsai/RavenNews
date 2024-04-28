@@ -1,4 +1,4 @@
-package com.raven.home.data.remote.service
+package com.raven.home.data.source.remote.service
 
 import com.raven.home.data.entities.ResponseNewsData
 import retrofit2.Response

@@ -1,5 +1,6 @@
 package com.raven.home.domain.usecases
 
+import android.util.Log
 import com.raven.core.bases.BaseUseCase
 import com.raven.home.domain.repository.HomeDataSource
 import com.raven.home.domain.models.ItemNews
@@ -10,14 +11,13 @@ import javax.inject.Inject
 
 class GeNewsUseCase @Inject constructor(
     private val dataSource: HomeDataSource
-) : BaseUseCase<String, Result<List<ItemNews>>>() {
-    override fun execute(params: String): Flow<Result<List<ItemNews>>> =
+) : BaseUseCase<Boolean, Result<List<ItemNews>>>() {
+    override fun execute(params: Boolean): Flow<Result<List<ItemNews>>> =
         flow {
-            dataSource.getNews().collect {
+            dataSource.getNews(params).collect {
                 when (it) {
                     is Result.Error -> emit(Result.Error(it.message))
                     is Result.Success -> emit(Result.Success(it.body?.items))
-                    else -> {}
                 }
             }
         }
