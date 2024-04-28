@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.raven.home.R
 import com.raven.home.databinding.ItemLayoutNewsBinding
 import com.raven.home.domain.models.ItemNews
 
@@ -33,6 +34,9 @@ class NewsAdapter : ListAdapter<ItemNews, NewsAdapter.NewsHolder>(MovieDiffCallb
         holder.bind.tvTitleNews.text = item.title
         holder.bind.tvSubtitleNews.text = item.subtitle
         holder.bind.tvCopyrightNews.text = item.copyright
-        Glide.with(holder.bind.root.context).load(item.urlImage).into(holder.bind.posterNewsImg);
+        Glide.with(holder.bind.root.context)
+            .load(item.urlImage)
+            .placeholder(R.drawable.place_holder_img)
+            .into(holder.bind.posterNewsImg);
     }
 }

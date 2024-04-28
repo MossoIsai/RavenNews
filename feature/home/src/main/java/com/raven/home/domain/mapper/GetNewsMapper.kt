@@ -6,6 +6,7 @@ import com.raven.home.data.source.local.NewsEntity
 import com.raven.home.domain.models.ItemNews
 import com.raven.home.domain.models.NewsDomain
 
+
 fun ResponseNewsData.toNewsDomain(): NewsDomain =
     NewsDomain(
         items = newsDataList?.let { news ->
@@ -32,6 +33,7 @@ fun ItemNews.toNewsEntity(): NewsEntity = NewsEntity(
     copyright = copyright,
     author = author,
     publishedDate = publishedDate,
+    imageUrl = urlImage
 )
 
 fun NewsEntity.toDomain(): ItemNews = ItemNews(
@@ -39,7 +41,7 @@ fun NewsEntity.toDomain(): ItemNews = ItemNews(
     title = title,
     subtitle = subtitle,
     copyright = copyright,
-    urlImage = "",
+    urlImage = imageUrl,
     author = author,
     publishedDate = publishedDate
 )

@@ -1,6 +1,5 @@
 package com.raven.home.data.repository
 
-import android.util.Log
 import com.raven.core.BuildConfig
 import com.raven.home.data.Result
 import com.raven.home.data.source.local.NewsDao
@@ -13,6 +12,7 @@ import com.raven.home.domain.mapper.toNewsDomain
 import com.raven.home.domain.mapper.toNewsEntity
 import com.raven.home.domain.models.ItemNews
 import com.raven.home.domain.models.NewsDomain
+import com.raven.home.presentation.extensions.handlerErrorMessage
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -27,26 +27,28 @@ class HomeRepository @Inject constructor(
 ) : HomeDataSource {
 
     private val service = serviceFactory.makeConnectionApiService(HomeService::class.java)
-    override suspend fun getNews(isNetworkAvailable: Boolean): Flow<Result<NewsDomain>> {
+    override suspend fun getNews(): Flow<Result<NewsDomain>> {
         return flow {
-            if (isNetworkAvailable) {
-                val response = service.getNews(BuildConfig.MY_API_KEY)
-                if (response.isSuccessful) {
-                    response.body()?.toNewsDomain()?.items?.forEach { item ->
-                        newsDao.insertNews(item.toNewsEntity())
-                    }
-                    emit(Result.Success(response.body()?.toNewsDomain()))
-                } else {
-                    emit(Result.Error(response.message()))
+            val response = service.getNews(BuildConfig.MY_API_KEY)
+            if (response.isSuccessful) {
+                response.body()?.toNewsDomain()?.items?.forEach { item ->
+                    newsDao.insertNews(item.toNewsEntity())
                 }
+                emit(Result.Success(response.body()?.toNewsDomain()))
             } else {
-                val arrayx: MutableList<ItemNews> = arrayListOf()
-                newsDao.getNews().forEach { newsEntity ->
-                    arrayx.add(newsEntity.toDomain())
-                }
-                emit(Result.Success(NewsDomain(arrayx)))
+                emit(Result.Error(response.message()))
             }
-        }.catch { emit(Result.Error(it.localizedMessage)) }
-            .flowOn(dispatcher)
+        }.catch {
+            emit(Result.Error(it.handlerErrorMessage()))
+            if (newsDao.getNews().isNotEmpty()) {
+                val items: MutableList<ItemNews> = arrayListOf()
+                newsDao.getNews().forEach { newsEntity ->
+                    items.add(newsEntity.toDomain())
+                }
+                emit(Result.Success(NewsDomain(items)))
+            } else {
+                emit(Result.Success(NewsDomain(arrayListOf())))
+            }
+        }.flowOn(dispatcher)
     }
 }

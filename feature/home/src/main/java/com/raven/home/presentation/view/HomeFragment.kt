@@ -1,7 +1,6 @@
 package com.raven.home.presentation.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,7 +29,6 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var newsAdapter: NewsAdapter
-    private var newtWorkStatus: Boolean = false
 
     @Inject
     lateinit var connectivityObserver: ConnectivityObserver
@@ -44,12 +42,11 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
         viewLifecycleOwner.lifecycleScope.launch {
             connectivityObserver.observerNetwork().collect {
-                newtWorkStatus = isNetworkAvailable(it)
-                if (!newtWorkStatus) {
+                if (!isNetworkAvailable(it)) {
                     SnackBarMessage.make(
                         binding.clMainContainer,
                         getString(R.string.with_out_connection_network)
@@ -67,8 +64,11 @@ class HomeFragment : Fragment() {
                     when (uiState) {
                         is NewsUIState.DisplayNews -> displayMoviesList(uiState.newsList)
                         NewsUIState.Loading -> showLoader()
-                        is NewsUIState.ShowError -> showError(uiState.errorMessage)
-                        NewsUIState.EmptyList -> Log.d("EMPTY", "EMPTY")
+                        is NewsUIState.ShowError -> {
+                            showError(uiState.errorMessage)
+                        }
+
+                        NewsUIState.EmptyList -> emptyState()
                     }
                 }
             }
@@ -77,7 +77,9 @@ class HomeFragment : Fragment() {
 
     private fun displayMoviesList(newsList: List<ItemNews>?) {
         with(binding) {
+            sfLayout.visibility = View.GONE
             rvNewsList.visibility = View.VISIBLE
+            clEmptyStateLayout.visibility = View.GONE
             newsAdapter = NewsAdapter()
             newsAdapter.submitList(newsList)
             rvNewsList.layoutManager = LinearLayoutManager(
@@ -100,13 +102,26 @@ class HomeFragment : Fragment() {
     }
 
     private fun showError(error: String) {
+        binding.sfLayout.visibility = View.GONE
         SnackBarMessage.make(binding.clMainContainer, error)
             .show()
     }
 
     private fun showLoader() {
-        SnackBarMessage.make(binding.clMainContainer, "LOADER")
-            .show()
+        with(binding) {
+            sfLayout.visibility = View.VISIBLE
+            rvNewsList.visibility = View.GONE
+            clEmptyStateLayout.visibility = View.GONE
+            sfLayout.startShimmer()
+        }
+    }
+
+    private fun emptyState() {
+        with(binding) {
+            binding.sfLayout.visibility = View.GONE
+            rvNewsList.visibility = View.GONE
+            clEmptyStateLayout.visibility = View.VISIBLE
+        }
     }
 
     override fun onDestroy() {

@@ -4,4 +4,5 @@
     <string name="welcome_message">Hello Raven</string>
     <string name="title_the_new_york_times">The New York Times</string>
     <string name="with_out_connection_network">Device is offline. Please check your Internet connection and try again.</string>
+    <string name="title_empty_state">You do not have saved items yet to be able to view them offline.</string>
 </resources>
