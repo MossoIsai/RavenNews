@@ -28,4 +28,10 @@ object Versions {
 
     /** room **/
     const val roomVersion = "2.5.0"
+
+    /** shimmer **/
+    const val shimmerVersion = "0.5.0"
+
+    /** lottie **/
+    const val lottieVersion = "3.4.0"
 }

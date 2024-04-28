@@ -4,16 +4,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import com.raven.home.data.constants.StringConstants
 import retrofit2.HttpException
 import java.io.IOException
+import java.net.ConnectException
 import java.net.SocketTimeoutException
+import java.net.UnknownHostException
 
 fun Throwable.handlerErrorMessage(): String {
     val errorMessage = when (this) {
-        is HttpException -> "Text"
-        is SocketTimeoutException -> "Text"
-        is IOException -> "Text"
-        else -> "Text"
+        is HttpException -> StringConstants.HTTP_EXCEPTION
+        is SocketTimeoutException -> StringConstants.SOCKET_TIMEOUT_EXCEPTION
+        is UnknownHostException -> StringConstants.UNKNOWN_HOST_EXCEPTION
+        is ConnectException -> StringConstants.CONNECTION_EXCEPTION
+        is IOException -> StringConstants.IO_EXCEPTION
+        else -> ""
     }
     return errorMessage
 }

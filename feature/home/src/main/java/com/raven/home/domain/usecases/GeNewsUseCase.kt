@@ -11,10 +11,10 @@ import javax.inject.Inject
 
 class GeNewsUseCase @Inject constructor(
     private val dataSource: HomeDataSource
-) : BaseUseCase<Boolean, Result<List<ItemNews>>>() {
-    override fun execute(params: Boolean): Flow<Result<List<ItemNews>>> =
+) : BaseUseCase<Unit, Result<List<ItemNews>>>() {
+    override fun execute(params: Unit): Flow<Result<List<ItemNews>>> =
         flow {
-            dataSource.getNews(params).collect {
+            dataSource.getNews().collect {
                 when (it) {
                     is Result.Error -> emit(Result.Error(it.message))
                     is Result.Success -> emit(Result.Success(it.body?.items))

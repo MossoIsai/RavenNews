@@ -5,4 +5,5 @@
     <color name="gray_900">#212121</color>
     <color name="gray_text">#666666</color>
     <color name="gray_dark">#333333</color>
+    <color name="gray_low">#C2C2C2</color>
 </resources>

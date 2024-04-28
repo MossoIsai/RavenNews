@@ -19,10 +19,16 @@ class HomeViewModel @Inject constructor(
 ) : ViewModel() {
 
     val newUIState: StateFlow<NewsUIState> =
-        useCase.execute(true).map {
+        useCase.execute().map {
             when (it) {
                 is Result.Error -> NewsUIState.ShowError(it.message)
-                is Result.Success -> NewsUIState.DisplayNews(it.body)
+                is Result.Success -> {
+                    if (it.body?.isNotEmpty() == true) {
+                        NewsUIState.DisplayNews(it.body)
+                    } else {
+                        NewsUIState.EmptyList
+                    }
+                }
             }
         }.catch {
             NewsUIState.ShowError(it.message.toString())

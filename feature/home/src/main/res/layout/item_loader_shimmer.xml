@@ -13,49 +13,39 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/standard_margin_medium_16dp"
-        android:layout_marginTop="@dimen/standard_margin_small_8dp"
+        android:layout_marginTop="@dimen/standard_margin_medium_16dp"
         android:layout_marginEnd="@dimen/standard_margin_medium_16dp"
-        android:fontFamily="@font/nunito_bold"
-        android:textColor="@color/gray_900"
-        android:textSize="@dimen/news_title_size"
+        android:background="@color/gray_low"
         app:layout_constraintEnd_toStartOf="@+id/posterNewsImg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCopyrightNews"
-        tools:ignore="MissingConstraints"
-        tools:text="Title for item" />
-
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/tvSubtitleNews"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginStart="@dimen/standard_margin_medium_16dp"
         android:layout_marginTop="@dimen/standard_margin_small_8dp"
         android:layout_marginEnd="@dimen/standard_margin_medium_16dp"
         android:layout_marginBottom="@dimen/standard_margin_medium_16dp"
-        android:fontFamily="@font/nunito_regular"
-        android:textColor="@color/gray_dark"
-        android:textSize="@dimen/news_subtitle_size"
+        android:background="@color/gray_low"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/posterNewsImg"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitleNews"
-        tools:text="Section plus author By Isai Garcia Moso" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleNews" />
 
     <TextView
         android:id="@+id/tvCopyrightNews"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="10dp"
         android:layout_marginStart="@dimen/standard_margin_medium_16dp"
         android:layout_marginTop="@dimen/standard_margin_medium_16dp"
         android:layout_marginEnd="@dimen/standard_margin_medium_16dp"
-        android:fontFamily="@font/nunito_light"
-        android:textColor="@color/gray_text"
-        android:textSize="@dimen/news_copyright_size"
+        android:background="@color/gray_low"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="copyright Isaí Garcia Moso" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/posterNewsImg"
@@ -63,13 +53,14 @@
         android:layout_height="@dimen/news_height_image"
         android:layout_marginTop="@dimen/standard_margin_small_8dp"
         android:layout_marginEnd="@dimen/standard_margin_medium_16dp"
+        android:background="@color/gray_low"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCopyrightNews" />
 
     <View
         android:layout_width="wrap_content"
         android:layout_height="@dimen/news_divider_size"
-        android:background="#F8F5F5"
+        android:background="@color/gray_low"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

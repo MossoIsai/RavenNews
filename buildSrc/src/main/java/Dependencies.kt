@@ -20,6 +20,8 @@ import Dependencies.glide
 import Dependencies.roomKtx
 import Dependencies.roomCompiler
 import Dependencies.roomRuntime
+import Dependencies.shimmer
+import Dependencies.lottie
 import ext.androidTestImplementation
 import ext.implementation
 import ext.kapt
@@ -67,6 +69,12 @@ object Dependencies {
     val roomKtx by lazy { "androidx.room:room-ktx:${Versions.roomVersion}" }
     val roomCompiler by lazy { "androidx.room:room-compiler:${Versions.roomVersion}" }
     val roomRuntime by lazy { "androidx.room:room-runtime:${Versions.roomVersion}" }
+
+    /** shimmer **/
+    val shimmer by lazy { "com.facebook.shimmer:shimmer:${Versions.shimmerVersion}" }
+
+    /** lottie **/
+    val lottie by lazy { "com.airbnb.android:lottie:${Versions.lottieVersion}" }
 }
 
 /** Dependencies **/
@@ -109,4 +117,12 @@ fun DependencyHandler.room() {
     implementation(roomKtx)
     kapt(roomCompiler)
     implementation(roomRuntime)
+}
+
+fun DependencyHandler.shimmer() {
+    implementation(shimmer)
+}
+
+fun DependencyHandler.lottie() {
+  implementation(lottie)
 }
