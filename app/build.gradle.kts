@@ -13,6 +13,7 @@ dependencies {
     general()
     testing()
     navigation()
+    room()
 
     implementation(project(":core"))
     implementation(project(":feature:home"))

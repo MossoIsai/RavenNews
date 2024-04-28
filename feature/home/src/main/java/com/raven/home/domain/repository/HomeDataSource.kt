@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface HomeDataSource {
 
-    suspend fun getNews(): Flow<Result<NewsDomain>>
+    suspend fun getNews(isNetworkAvailable: Boolean): Flow<Result<NewsDomain>>
 }

@@ -1,14 +1,15 @@
 package com.raven.home.domain.models
 
 data class NewsDomain(
-    val items: List<ItemNews>,
-
-    )
+    val items: List<ItemNews>
+)
 
 data class ItemNews(
+    val id: Long,
     val title: String,
     val subtitle: String,
     val copyright: String,
     val urlImage: String,
-    val id: Long
+    val author: String,
+    val publishedDate: String
 )

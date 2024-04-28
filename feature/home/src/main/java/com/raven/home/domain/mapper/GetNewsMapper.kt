@@ -2,6 +2,7 @@ package com.raven.home.domain.mapper
 
 import com.raven.home.data.entities.NewsData
 import com.raven.home.data.entities.ResponseNewsData
+import com.raven.home.data.source.local.NewsEntity
 import com.raven.home.domain.models.ItemNews
 import com.raven.home.domain.models.NewsDomain
 
@@ -19,5 +20,26 @@ fun NewsData.toNewsDomain(): ItemNews = ItemNews(
     subtitle = abstract ?: "",
     copyright = media?.first()?.copyright ?: "",
     urlImage = media?.first()?.mediaMetadata?.get(2)?.url ?: "",
-    id = id ?: 0
+    id = id ?: 0,
+    author = byline ?: "",
+    publishedDate = publishedDate ?: ""
+)
+
+fun ItemNews.toNewsEntity(): NewsEntity = NewsEntity(
+    newsId = id,
+    title = title,
+    subtitle = subtitle,
+    copyright = copyright,
+    author = author,
+    publishedDate = publishedDate,
+)
+
+fun NewsEntity.toDomain(): ItemNews = ItemNews(
+    id = newsId,
+    title = title,
+    subtitle = subtitle,
+    copyright = copyright,
+    urlImage = "",
+    author = author,
+    publishedDate = publishedDate
 )
