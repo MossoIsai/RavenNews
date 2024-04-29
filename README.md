@@ -11,7 +11,6 @@ Cuando tienes acceso a internet y puedes ver la lista de elementos desde remote-
 
 ![Screenshot_20240425_172634](https://github.com/MossoIsai/RavenNews/assets/8402737/5bae7824-196b-4b6c-831a-7d82fb19d68e)
 
-
 ## Display news from local-data-source 
 Cuando NO tienes acceso a internet y puedes ver la lista de elementos desde local-data-source
 
@@ -20,9 +19,13 @@ Cuando NO tienes acceso a internet y puedes ver la lista de elementos desde loca
 ## Display OFFLINE
 ![Screenshot_20240428_153335](https://github.com/MossoIsai/RavenNews/assets/8402737/8c3717c3-1a87-433c-8cd7-122e3fcaea68)
 
-## News Detail
+## Loading Status
+![Screenshot_20240428_153314](https://github.com/MossoIsai/RavenNews/assets/8402737/fb4c60d3-cbdb-4c69-aca3-1d1aaceb6ffa)
 
+## News Detail
 ![Screenshot_20240429_074059](https://github.com/MossoIsai/RavenNews/assets/8402737/d5b9d86c-673a-44f6-8731-db84515f1a7b)
+![Screenshot_20240429_090111](https://github.com/MossoIsai/RavenNews/assets/8402737/9709608b-419a-4936-8067-8f89448718d7)
+
 
 
 
