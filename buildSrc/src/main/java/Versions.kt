@@ -25,6 +25,7 @@ object Versions {
 
     const val navVersion = "2.5.1"
     const val glide = "4.16.0"
+    const val activityVersion = "1.9.0"
 
     /** room **/
     const val roomVersion = "2.5.0"

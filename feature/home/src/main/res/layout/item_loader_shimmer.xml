@@ -18,13 +18,13 @@
         android:background="@color/gray_low"
         app:layout_constraintEnd_toStartOf="@+id/posterNewsImg"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCopyrightNews"
+        app:layout_constraintTop_toBottomOf="@+id/tvNewsByLine"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/tvSubtitleNews"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/news_header_size"
         android:layout_marginStart="@dimen/standard_margin_medium_16dp"
         android:layout_marginTop="@dimen/standard_margin_small_8dp"
         android:layout_marginEnd="@dimen/standard_margin_medium_16dp"
@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTitleNews" />
 
     <TextView
-        android:id="@+id/tvCopyrightNews"
+        android:id="@+id/tvNewsByLine"
         android:layout_width="0dp"
         android:layout_height="10dp"
         android:layout_marginStart="@dimen/standard_margin_medium_16dp"
@@ -55,7 +55,7 @@
         android:layout_marginEnd="@dimen/standard_margin_medium_16dp"
         android:background="@color/gray_low"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCopyrightNews" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNewsByLine" />
 
     <View
         android:layout_width="wrap_content"

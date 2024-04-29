@@ -20,7 +20,7 @@
         android:textSize="@dimen/news_title_size"
         app:layout_constraintEnd_toStartOf="@+id/posterNewsImg"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCopyrightNews"
+        app:layout_constraintTop_toBottomOf="@+id/tvNewsByLine"
         tools:ignore="MissingConstraints"
         tools:text="Title for item" />
 
@@ -43,7 +43,7 @@
         tools:text="Section plus author By Isai Garcia Moso" />
 
     <TextView
-        android:id="@+id/tvCopyrightNews"
+        android:id="@+id/tvNewsByLine"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/standard_margin_medium_16dp"
@@ -64,7 +64,7 @@
         android:layout_marginTop="@dimen/standard_margin_small_8dp"
         android:layout_marginEnd="@dimen/standard_margin_medium_16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCopyrightNews" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNewsByLine" />
 
     <View
         android:layout_width="wrap_content"

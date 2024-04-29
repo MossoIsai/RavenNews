@@ -9,6 +9,14 @@
         android:id="@+id/home_fragment"
         android:name="com.raven.home.presentation.view.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/home_fragment" />
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_home_fragment_to_newsDetailFragment"
+            app:destination="@id/newsDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsDetailFragment"
+        android:name="com.raven.home.presentation.view.NewsDetailFragment"
+        android:label="NewsDetailFragment" />
 
 </navigation>
