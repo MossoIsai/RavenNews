@@ -22,6 +22,7 @@ import Dependencies.roomCompiler
 import Dependencies.roomRuntime
 import Dependencies.shimmer
 import Dependencies.lottie
+import Dependencies.activity
 import ext.androidTestImplementation
 import ext.implementation
 import ext.kapt
@@ -63,6 +64,7 @@ object Dependencies {
     val navigationUI by lazy { "androidx.navigation:navigation-ui-ktx:${Versions.navVersion}" }
     val navigationFragment by lazy { "androidx.navigation:navigation-fragment-ktx:${Versions.navVersion}" }
     val lifeCycleViewModel by lazy { "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifeCycle}" }
+    val activity by lazy { "androidx.activity:activity-ktx:${Versions.activityVersion}" }
     val glide by lazy { "com.github.bumptech.glide:glide:${Versions.glide}" }
 
     /** room */
@@ -75,6 +77,7 @@ object Dependencies {
 
     /** lottie **/
     val lottie by lazy { "com.airbnb.android:lottie:${Versions.lottieVersion}" }
+
 }
 
 /** Dependencies **/
@@ -111,6 +114,7 @@ fun DependencyHandler.navigation() {
     implementation(navigationFragment)
     implementation(lifeCycleViewModel)
     implementation(glide)
+    implementation(activity)
 }
 
 fun DependencyHandler.room() {
@@ -124,5 +128,5 @@ fun DependencyHandler.shimmer() {
 }
 
 fun DependencyHandler.lottie() {
-  implementation(lottie)
+    implementation(lottie)
 }

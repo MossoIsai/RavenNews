@@ -10,10 +10,27 @@ import com.raven.home.R
 import com.raven.home.databinding.ItemLayoutNewsBinding
 import com.raven.home.domain.models.ItemNews
 
-class NewsAdapter : ListAdapter<ItemNews, NewsAdapter.NewsHolder>(MovieDiffCallback()) {
+class NewsAdapter(
+    private val onClickNews: (ItemNews) -> Unit
+) : ListAdapter<ItemNews, NewsAdapter.NewsHolder>(MovieDiffCallback()) {
 
-    inner class NewsHolder(val bind: ItemLayoutNewsBinding) :
-        RecyclerView.ViewHolder(bind.root)
+    inner class NewsHolder(
+        private val binding: ItemLayoutNewsBinding,
+        private val onClickNews: (ItemNews) -> Unit
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(news: ItemNews) {
+            binding.tvTitleNews.text = news.title
+            binding.tvSubtitleNews.text = news.subtitle
+            binding.tvNewsByLine.text = news.author
+            Glide.with(binding.root.context)
+                .load(news.urlImage)
+                .placeholder(R.drawable.place_holder_img)
+                .into(binding.posterNewsImg)
+            binding.root.setOnClickListener {
+                onClickNews(news)
+            }
+        }
+    }
 
     class MovieDiffCallback : DiffUtil.ItemCallback<ItemNews>() {
         override fun areItemsTheSame(oldItem: ItemNews, newItem: ItemNews): Boolean =
@@ -26,17 +43,11 @@ class NewsAdapter : ListAdapter<ItemNews, NewsAdapter.NewsHolder>(MovieDiffCallb
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsHolder {
         val itemBinding =
             ItemLayoutNewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return NewsHolder(itemBinding)
+        return NewsHolder(itemBinding, onClickNews)
     }
 
     override fun onBindViewHolder(holder: NewsHolder, position: Int) {
         val item = getItem(position)
-        holder.bind.tvTitleNews.text = item.title
-        holder.bind.tvSubtitleNews.text = item.subtitle
-        holder.bind.tvCopyrightNews.text = item.copyright
-        Glide.with(holder.bind.root.context)
-            .load(item.urlImage)
-            .placeholder(R.drawable.place_holder_img)
-            .into(holder.bind.posterNewsImg);
+        holder.bind(item)
     }
 }

@@ -1,5 +1,7 @@
 package com.raven.home.domain.models
 
+import java.io.Serializable
+
 data class NewsDomain(
     val items: List<ItemNews>
 )
@@ -12,4 +14,4 @@ data class ItemNews(
     val urlImage: String,
     val author: String,
     val publishedDate: String
-)
+):Serializable

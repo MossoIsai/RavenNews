@@ -1,51 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/tvNewsDetailTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/standard_margin_medium_16dp"
-        android:layout_marginTop="@dimen/standard_margin_extra_big_32dp"
-        android:layout_marginEnd="@dimen/standard_margin_medium_16dp"
-        android:fontFamily="@font/nunito_bold"
-        android:textColor="@color/gray_900"
-        android:textSize="@dimen/news_detail_title_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Liz Cheney: The Supreme Court Should Rule Swiftly on Trump´s Immunity Claim" />
-
-    <TextView
-        android:id="@+id/tvNewsDetailSubTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/standard_margin_medium_16dp"
-        android:layout_marginTop="@dimen/standard_margin_medium_16dp"
-        android:layout_marginEnd="@dimen/standard_margin_medium_16dp"
-        android:fontFamily="@font/nunito_regular"
-        android:textColor="@color/gray_dark"
-        android:textSize="@dimen/news_detail_sub_title_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNewsDetailTitle"
-        tools:text="Unlike in Europe, few in the United States will be celebrating the philosopher’s 300th birthday. But Kant’s writing shows that a free, just and moral life is possible — and that’s relevant everywhere." />
-
-    <ImageView
-        android:id="@+id/imgNewsPoster"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginStart="@dimen/standard_margin_medium_16dp"
-        android:layout_marginTop="@dimen/standard_margin_medium_16dp"
-        android:layout_marginEnd="@dimen/standard_margin_medium_16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNewsDetailSubTitle" />
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/news_detail_margin_bottom_extra_big_100dp">
+
+        <TextView
+            android:id="@+id/tvNewsDetailTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/standard_margin_medium_16dp"
+            android:layout_marginTop="@dimen/standard_margin_extra_big_32dp"
+            android:layout_marginEnd="@dimen/standard_margin_medium_16dp"
+            android:fontFamily="@font/nunito_bold"
+            android:textColor="@color/gray_900"
+            android:textSize="@dimen/news_detail_title_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Liz Cheney: The Supreme Court Should Rule Swiftly on Trump´s Immunity Claim" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvNewsDetailPublishedDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/standard_margin_medium_16dp"
+            android:layout_marginTop="@dimen/standard_margin_medium_16dp"
+            android:layout_marginEnd="@dimen/standard_margin_medium_16dp"
+            android:fontFamily="@font/nunito_light"
+            android:textColor="@color/gray_text"
+            android:textSize="@dimen/news_title_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNewsDetailTitle"
+            tools:text="28-09-20243" />
+
+        <TextView
+            android:id="@+id/tvNewsDetailByLine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/standard_margin_medium_16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/standard_margin_medium_16dp"
+            android:fontFamily="@font/nunito_regular"
+            android:textColor="@color/gray_dark"
+            android:textSize="@dimen/news_detail_sub_title_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNewsDetailPublishedDate"
+            tools:text="By Isai Mozzo Ramones" />
+
+        <ImageView
+            android:id="@+id/imgNewsPoster"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginStart="@dimen/standard_margin_medium_16dp"
+            android:layout_marginTop="@dimen/standard_margin_medium_16dp"
+            android:layout_marginEnd="@dimen/standard_margin_medium_16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNewsDetailByLine" />
+
+        <TextView
+            android:id="@+id/tvNewsDetailSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/standard_margin_medium_16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/standard_margin_medium_16dp"
+            android:fontFamily="@font/nunito_light"
+            android:textColor="@color/gray_900"
+            android:textSize="@dimen/news_detail_sub_title_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgNewsPoster"
+            tools:text="Liz Cheney: The Supreme Court Should Rule Swiftly on Trump´s Immunity Claim" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

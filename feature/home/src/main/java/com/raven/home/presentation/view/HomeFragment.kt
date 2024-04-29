@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -18,6 +19,7 @@ import com.raven.home.domain.models.ItemNews
 import com.raven.home.presentation.adapter.NewsAdapter
 import com.raven.home.presentation.uistate.NewsUIState
 import com.raven.home.presentation.viewmodel.HomeViewModel
+import com.raven.home.presentation.viewmodel.ItemViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -28,6 +30,8 @@ class HomeFragment : Fragment() {
     private var _binding: HomeFragmentBinding? = null
     private val binding get() = _binding!!
     private val viewModel: HomeViewModel by viewModels()
+    private val viewModelActivity: ItemViewModel by activityViewModels()
+
     private lateinit var newsAdapter: NewsAdapter
 
     @Inject
@@ -80,7 +84,7 @@ class HomeFragment : Fragment() {
             sfLayout.visibility = View.GONE
             rvNewsList.visibility = View.VISIBLE
             clEmptyStateLayout.visibility = View.GONE
-            newsAdapter = NewsAdapter()
+            newsAdapter = NewsAdapter(::goToDetail)
             newsAdapter.submitList(newsList)
             rvNewsList.layoutManager = LinearLayoutManager(
                 activity,
@@ -102,9 +106,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun showError(error: String) {
-        binding.sfLayout.visibility = View.GONE
-        SnackBarMessage.make(binding.clMainContainer, error)
-            .show()
+        with(binding) {
+            sfLayout.visibility = View.GONE
+            SnackBarMessage.make(clMainContainer, error)
+                .show()
+        }
     }
 
     private fun showLoader() {
@@ -118,10 +124,14 @@ class HomeFragment : Fragment() {
 
     private fun emptyState() {
         with(binding) {
-            binding.sfLayout.visibility = View.GONE
+            sfLayout.visibility = View.GONE
             rvNewsList.visibility = View.GONE
             clEmptyStateLayout.visibility = View.VISIBLE
         }
+    }
+
+    private fun goToDetail(news: ItemNews) {
+        viewModelActivity.selectItem(news)
     }
 
     override fun onDestroy() {
