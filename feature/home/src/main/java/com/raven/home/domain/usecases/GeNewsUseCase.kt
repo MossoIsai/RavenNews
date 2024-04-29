@@ -1,6 +1,5 @@
 package com.raven.home.domain.usecases
 
-import android.util.Log
 import com.raven.core.bases.BaseUseCase
 import com.raven.home.domain.repository.HomeDataSource
 import com.raven.home.domain.models.ItemNews
