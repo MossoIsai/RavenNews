@@ -1,6 +1,7 @@
 # Test Raven
 ## 
-## Empty State(Esto sucede cuando no tienes accesso a internet y no tienes almacenado en room)
+## Empty State:
+Esto sucede cuando no tienes accesso a internet y no tienes ningun elemento almacenado en room.
 
 ![Screenshot_20240428_153025](https://github.com/MossoIsai/RavenNews/assets/8402737/5d993140-df90-4e0e-bb11-f9d08685bef7)
 
