@@ -9,7 +9,7 @@ Esto sucede cuando no tienes accesso a internet y no tienes ningun elemento alma
 ## Display news 
 Cuando tienes acceso a internet y puedes ver la lista de elementos desde remote-data-source
 
-![Screenshot_20240425_172634](https://github.com/MossoIsai/RavenNews/assets/8402737/5bae7824-196b-4b6c-831a-7d82fb19d68e)
+![Screenshot_20240429_090406](https://github.com/MossoIsai/RavenNews/assets/8402737/7c60ffd7-0013-44e8-966b-3b5baf862622)
 
 ## Display news from local-data-source 
 Cuando NO tienes acceso a internet y puedes ver la lista de elementos desde local-data-source
