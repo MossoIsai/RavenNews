@@ -26,6 +26,11 @@ Cuando NO tienes acceso a internet y puedes ver la lista de elementos desde loca
 ![Screenshot_20240429_074059](https://github.com/MossoIsai/RavenNews/assets/8402737/d5b9d86c-673a-44f6-8731-db84515f1a7b)
 ![Screenshot_20240429_090111](https://github.com/MossoIsai/RavenNews/assets/8402737/9709608b-419a-4936-8067-8f89448718d7)
 
+## Socket timeout
+Cuando el tiempo de espera llego a su limite pero si tienes elementos en local-data-source te los mostrara
+![WhatsApp Image 2024-04-29 at 9 18 52 AM](https://github.com/MossoIsai/RavenNews/assets/8402737/dc7d235b-f2f2-4eb4-99cd-aa9dcd4698b1)
+
+
 
 
 
