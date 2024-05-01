@@ -18,7 +18,7 @@ fun Throwable.handlerErrorMessage(): String {
         is UnknownHostException -> StringConstants.UNKNOWN_HOST_EXCEPTION
         is ConnectException -> StringConstants.CONNECTION_EXCEPTION
         is IOException -> StringConstants.IO_EXCEPTION
-        else -> ""
+        else -> this.message.toString()
     }
     return errorMessage
 }
