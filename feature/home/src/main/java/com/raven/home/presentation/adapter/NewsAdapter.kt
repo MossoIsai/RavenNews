@@ -12,7 +12,7 @@ import com.raven.home.domain.models.ItemNews
 
 class NewsAdapter(
     private val onClickNews: (ItemNews) -> Unit
-) : ListAdapter<ItemNews, NewsAdapter.NewsHolder>(MovieDiffCallback()) {
+) : ListAdapter<ItemNews, NewsAdapter.NewsHolder>(NewsDiffCallback()) {
 
     inner class NewsHolder(
         private val binding: ItemLayoutNewsBinding,
@@ -32,7 +32,7 @@ class NewsAdapter(
         }
     }
 
-    class MovieDiffCallback : DiffUtil.ItemCallback<ItemNews>() {
+    class NewsDiffCallback : DiffUtil.ItemCallback<ItemNews>() {
         override fun areItemsTheSame(oldItem: ItemNews, newItem: ItemNews): Boolean =
             oldItem.id == newItem.id
 

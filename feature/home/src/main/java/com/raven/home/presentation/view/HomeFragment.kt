@@ -46,20 +46,6 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewLifecycleOwner.lifecycleScope.launch {
-            connectivityObserver.observerNetwork().collect {
-                if (!isNetworkAvailable(it)) {
-                    SnackBarMessage.make(
-                        binding.clMainContainer,
-                        getString(R.string.with_out_connection_network)
-                    ).show()
-                }
-            }
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewLifecycleOwner.lifecycleScope.launch {
@@ -74,6 +60,17 @@ class HomeFragment : Fragment() {
 
                         NewsUIState.EmptyList -> emptyState()
                     }
+                }
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            connectivityObserver.observerNetwork().collect {
+                if (!isNetworkAvailable(it)) {
+                    SnackBarMessage.make(
+                        binding.clMainContainer,
+                        getString(R.string.with_out_connection_network)
+                    ).show()
                 }
             }
         }

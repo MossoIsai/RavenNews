@@ -5,7 +5,6 @@ import com.raven.home.data.Result
 import com.raven.home.data.source.local.NewsDao
 import com.raven.home.data.source.remote.ServiceFactory
 import com.raven.home.data.source.remote.service.HomeService
-import com.raven.home.di.ServiceFactoryModule.IoDispatcher
 import com.raven.home.domain.mapper.toDomain
 import com.raven.home.domain.repository.HomeDataSource
 import com.raven.home.domain.mapper.toNewsDomain
@@ -13,16 +12,13 @@ import com.raven.home.domain.mapper.toNewsEntity
 import com.raven.home.domain.models.ItemNews
 import com.raven.home.domain.models.NewsDomain
 import com.raven.home.presentation.extensions.handlerErrorMessage
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class HomeRepository @Inject constructor(
     serviceFactory: ServiceFactory,
-    @IoDispatcher private val dispatcher: CoroutineDispatcher,
     private val newsDao: NewsDao
 ) : HomeDataSource {
 
@@ -49,6 +45,6 @@ class HomeRepository @Inject constructor(
             } else {
                 emit(Result.Success(NewsDomain(arrayListOf())))
             }
-        }.flowOn(dispatcher)
+        }
     }
 }
