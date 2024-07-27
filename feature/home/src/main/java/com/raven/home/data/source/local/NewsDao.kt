@@ -12,5 +12,5 @@ interface NewsDao {
     fun insertNews(news: NewsEntity)
 
     @Query("SELECT * FROM news")
-    fun getNews(): List<NewsEntity>
+    fun getNews(): Flow<List<NewsEntity>>
 }
