@@ -3,6 +3,7 @@ package com.raven.home.data.repository
 import com.raven.core.BuildConfig
 import com.raven.home.data.Result
 import com.raven.home.data.source.local.NewsDao
+import com.raven.home.data.source.local.NewsEntity
 import com.raven.home.data.source.remote.ServiceFactory
 import com.raven.home.data.source.remote.service.HomeService
 import com.raven.home.domain.mapper.toDomain
@@ -36,14 +37,17 @@ class HomeRepository @Inject constructor(
             }
         }.catch {
             emit(Result.Error(it.handlerErrorMessage()))
-            if (newsDao.getNews().isNotEmpty()) {
+            val daoFlow: Flow<List<NewsEntity>> = newsDao.getNews()
+            daoFlow.collect { listNewsEntity ->
                 val items: MutableList<ItemNews> = arrayListOf()
-                newsDao.getNews().forEach { newsEntity ->
-                    items.add(newsEntity.toDomain())
+                if (listNewsEntity.isNotEmpty()) {
+                    listNewsEntity.forEach { entity ->
+                        items.add(entity.toDomain())
+                    }
+                    emit(Result.Success(NewsDomain(items)))
+                } else {
+                    emit(Result.Success(NewsDomain(arrayListOf())))
                 }
-                emit(Result.Success(NewsDomain(items)))
-            } else {
-                emit(Result.Success(NewsDomain(arrayListOf())))
             }
         }
     }

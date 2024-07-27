@@ -1,5 +1,6 @@
 package com.raven.home.domain.usecases
 
+import android.util.Log
 import com.raven.core.bases.BaseUseCase
 import com.raven.home.domain.repository.HomeDataSource
 import com.raven.home.domain.models.ItemNews
@@ -18,7 +19,9 @@ class GeNewsUseCase @Inject constructor(
         dataSource.getNews().collect {
             when (it) {
                 is Result.Error -> emit(Result.Error(it.message))
-                is Result.Success -> emit(Result.Success(it.body?.items))
+                is Result.Success ->{
+                    emit(Result.Success(it.body?.items))
+                }
             }
         }
     }.flowOn(dispatcher)
